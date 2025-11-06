@@ -1,14 +1,14 @@
-```markdown
-<!-- markdownlint-disable MD033 MD041 -->
-<p align="center">
-  <img src="docs/logo.png" alt="Turing Chat Logo" width="120"/>
-  <h1 align="center">🧠 Turing Chat</h1>
-  <p align="center">
-    本地智能对话系统 · 完全私有化 · 无需联网
-    <br/>
-    <em>FastAPI + Vue3 + Docker + Ollama (Qwen3:8B)</em>
-  </p>
-</p>
+###🧠 Turing Chat：本地智能对话系统
+FastAPI + Vue3 + Docker + Ollama (Qwen3:8B)
+
+> **🚧 项目声明**  
+> 本项目是作者学习 **大模型课程-FastAPI** 阶段的练手作品，当前仅实现「接入本地模型 + 前端基础对话」功能，代码与文档均处于课程实验状态。  
+> 下文所列的「RAG、插件系统、多模态、语音交互」等特性均为课程结业后的**远期探索目标**，尚未落地。  
+> 若你期待完整功能，请关注后续更新；如想参与共建，欢迎提 Issue/PR，一起把 TODO 变成 DONE！
+
+---
+
+将以上段落放在 README 最顶部（标题之下、目录之上），即可第一时间提醒读者「当前能力边界」，避免误解。
 
 ---
 
