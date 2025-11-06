@@ -1,88 +1,149 @@
-#🧠 Turing Chat — 本地智能对话系统
-一个基于 FastAPI + Vue/React + Docker + Ollama (Qwen3:8B) 的端到端私有化 AI 聊天应用。无需联网、不依赖 OpenAI，所有数据与模型运行在本地，保护隐私，支持多轮对话、流式响应、文件分析与知识库问答（RAG）。
+```markdown
+<!-- markdownlint-disable MD033 MD041 -->
+<p align="center">
+  <img src="docs/logo.png" alt="Turing Chat Logo" width="120"/>
+  <h1 align="center">🧠 Turing Chat</h1>
+  <p align="center">
+    本地智能对话系统 · 完全私有化 · 无需联网
+    <br/>
+    <em>FastAPI + Vue3 + Docker + Ollama (Qwen3:8B)</em>
+  </p>
+</p>
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-(可选：后续加上 demo 链接、GitHub Actions 状态等)
+---
 
-✨ 核心特性
-🔒 完全本地运行：模型（Qwen3:8B）通过 Ollama 在本地加载，无外部 API 调用
-💬 多轮对话记忆：自动维护上下文，支持连贯交互
-⚡ 流式输出：文字逐字生成，体验接近 ChatGPT
-📄 文档理解：支持上传 PDF/TXT 文件，AI 自动解析内容并回答问题
-🧠 RAG 知识库：基于 ChromaDB 实现私有文档语义检索增强
-🌗 现代化 UI：Markdown 渲染、暗黑模式、自动滚动、对话持久化
-🐳 一键部署：Docker Compose 三服务编排（前端 + 后端 + Nginx）
+## 📑 目录
+- [✨ 核心特性](#-核心特性)
+- [🛠 技术栈](#-技术栈)
+- [🚀 快速开始](#-快速开始)
+- [📂 项目结构](#-项目结构)
+- [🖼 功能预览](#-功能预览)
+- [🧩 后续计划](#-后续计划)
+- [🤝 贡献指南](#-贡献指南)
+- [💡 致谢](#-致谢)
+- [📄 许可证](#-许可证)
 
-🛠 技术栈
+---
 
-层级 技术
------- ------
-前端 Vue 3 / React + Vite + Tailwind CSS + vue3-markdown-it
-后端 FastAPI + Pydantic + HTTPX
-AI 引擎 Ollama + Qwen3:8B（GGUF 量化版）
-向量库 ChromaDB（轻量、嵌入式）
-部署 Docker + Docker Compose + Nginx
+## ✨ 核心特性
 
-🚀 快速开始
-前置条件
-已安装 [Docker](https://www.docker.com/) 和 [Docker Compose](https://docs.docker.com/compose/)
-本地已拉取 Qwen3:8B 模型：
-bash
-ollama pull qwen3:8b
+| 特性 | 说明 |
+|---|---|
+| 🔒 **完全本地运行** | 模型（Qwen3:8B）通过 Ollama 加载，零外部 API 调用 |
+| 💬 **多轮对话记忆** | 自动维护上下文，支持连贯交互 |
+| ⚡ **流式输出** | SSE 逐字生成，体验接近 ChatGPT |
+| 📄 **文档理解** | 上传 PDF / TXT，自动解析并问答 |
+| 🧠 **RAG 知识库** | 基于 ChromaDB 实现私有文档语义检索增强 |
+| 🌗 **现代化 UI** | Markdown 渲染、暗黑模式、自动滚动、对话持久化 |
+| 🐳 **一键部署** | Docker Compose 三服务编排（前端 + 后端 + Nginx） |
 
-启动项目
-bash
+---
+
+## 🛠 技术栈
+
+| 层级 | 技术 |
+|---|---|
+| 前端 | Vue 3 + Vite + Tailwind CSS + vue3-markdown-it |
+| 后端 | FastAPI + Pydantic + HTTPX |
+| AI 引擎 | Ollama + Qwen3:8B（GGUF 量化版） |
+| 向量库 | ChromaDB（轻量、嵌入式） |
+| 部署 | Docker + Docker Compose + Nginx |
+
+---
+
+## 🚀 快速开始
+
+### 前置条件
+1. 已安装 **Docker** 与 **Docker Compose**
+2. 本地已拉取 Qwen3:8B 模型  
+   ```bash
+   ollama pull qwen3:8b
+   ```
+
+### 一键启动
+```bash
 git clone https://github.com/yourname/turing-chat.git
 cd turing-chat
-构建并启动（自动构建前端 + 启动后端 + Nginx 反代）
+# 自动构建前端、启动后端、Nginx 反代
 docker-compose up --build
-访问
-前端：http://localhost
-API：http://localhost/api/chat
-💡 首次启动可能较慢（需加载 8B 模型），请耐心等待。
+```
 
-📂 项目结构
+### 访问服务
+- 前端：http://localhost  
+- API：http://localhost/api/chat  
 
+> 首次启动需加载 8B 模型，耐心等待 30-60s 即可。
+
+---
+
+## 📂 项目结构
+
+```
 turing-chat/
-├── backend/ # FastAPI 后端
-│ ├── main.py # 入口
-│ ├── api/
-│ │ └── chat.py # 聊天、流式、文件上传接口
-│ └── rag/
-│ └── chroma_client.py
-├── frontend/ # Vue/React 前端
-│ ├── src/
-│ │ ├── components/
-│ │ └── App.vue
-│ └── vite.config.js
+├── backend/                 # FastAPI 后端
+│   ├── main.py
+│   ├── api/
+│   │   └── chat.py         # 聊天 / 流式 / 文件上传
+│   └── rag/
+│       └── chroma_client.py
+├── frontend/                # Vue3 前端
+│   ├── src/
+│   │   ├── components/
+│   │   └── App.vue
+│   └── vite.config.js
 ├── nginx/
-│ └── default.conf # 反向代理配置
+│   └── default.conf        # 反向代理
 ├── docker-compose.yml
 ├── Dockerfile.backend
-├── Dockerfile.frontend # （可选，也可合并构建）
+├── Dockerfile.frontend
 └── README.md
+```
 
-🖼 功能预览（可选）
-（建议后续添加 1–2 张截图：聊天界面 + RAG 问答效果）
+---
 
-🧩 后续计划
-🔹 核心体验完善
- 多轮对话增强：支持上下文自动摘要，避免长对话超限
- 流式响应优化：前端 SSE 稳定性提升 + 打字机动画
- 角色预设系统：内置“编程助手”“学术顾问”等 persona，支持自定义 system prompt
-🔹 知识与文件理解
- 文件智能分析：支持 PDF / DOCX / TXT 上传，自动提取文本并问答
- 本地 RAG 引擎：基于 ChromaDB 构建私有知识库，实现文档语义检索增强生成
-🔹 行动能力扩展
- 插件系统（Function Calling）：模型可调用工具（如查天气、执行 Python 代码、搜索网络）
- 动态工具注册：开发者可轻松添加新插件，无需修改核心逻辑
-🔹 长期探索
- 语音交互：集成 Whisper（语音转文字） + 开源 TTS（文字转语音），支持语音聊天
- 多模态支持：接入 Qwen-VL 等视觉语言模型，实现图文混合输入
- 对话数据沉淀：匿名化保存高质量对话，用于小模型微调或评估
+## 🖼 功能预览
 
+| 聊天界面 | RAG 问答 |
+|---|---|
+| ![chat](docs/chat.png) | ![rag](docs/rag.png) |
 
-💡 致谢
-[Ollama](https://ollama.com/) – 本地大模型运行引擎
-[Qwen](https://qwenlm.github.io/) – 千问系列开源模型
-[ChromaDB](https://www.trychroma.com/) – 轻量向量数据库
+> 截图后续补充，占位即可。
+
+---
+
+## 🧩 后续计划
+
+| 方向 | 详情 |
+|---|---|
+| 🔹 **核心体验** | 多轮摘要 · SSE 优化 · 角色预设 |
+| 🔹 **知识增强** | DOCX 支持 · 分段策略 · 检索重排序 |
+| 🔹 **插件系统** | Function Calling · 动态注册 · 沙箱执行 |
+| 🔹 **多模态** | Whisper + TTS · Qwen-VL 图文对话 |
+| 🔹 **数据沉淀** | 匿名化对话保存 · 小模型微调 |
+
+---
+
+## 🤝 贡献指南
+
+欢迎提 Issue / PR！  
+请遵守 [Conventional Commits](https://www.conventionalcommits.org/) 规范，并在 PR 内描述测试场景。
+
+---
+
+## 💡 致谢
+
+- [Ollama](https://ollama.ai) – 本地大模型运行引擎  
+- [Qwen](https://github.com/QwenLM) – 千问系列开源模型  
+- [ChromaDB](https://www.trychroma.com) – 轻量向量数据库  
+
+---
+
+## 📄 许可证
+
+[MIT](./LICENSE) © 2025 yourname
+```
+
+使用说明  
+1. 将 `yourname/turing-chat` 换成真实 GitHub 路径；  
+2. `docs/logo.png`、`docs/chat.png`、`docs/rag.png` 自行放图即可；  
+3. 如需 React 版，只需把「技术栈」与「前端目录」中的 Vue 字样改为 React。
