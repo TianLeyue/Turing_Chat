@@ -1,4 +1,4 @@
-###🧠 Turing Chat：本地智能对话系统
+## 🧠 Turing Chat：本地智能对话系统
 FastAPI + Vue3 + Docker + Ollama (Qwen3:8B)
 
 > **🚧 项目声明**  
@@ -6,9 +6,6 @@ FastAPI + Vue3 + Docker + Ollama (Qwen3:8B)
 > 下文所列的「RAG、插件系统、多模态、语音交互」等特性均为课程结业后的**远期探索目标**，尚未落地。  
 > 若你期待完整功能，请关注后续更新；如想参与共建，欢迎提 Issue/PR，一起把 TODO 变成 DONE！
 
----
-
-将以上段落放在 README 最顶部（标题之下、目录之上），即可第一时间提醒读者「当前能力边界」，避免误解。
 
 ---
 
