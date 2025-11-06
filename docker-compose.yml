@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: ./backend/app
+    container_name: turing-backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8000:8000"
+    # 使用默认 bridge 网络；后台会通过 host.docker.internal 访问宿主上的 Ollama
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: turing-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    restart: unless-stopped
