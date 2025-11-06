@@ -1,10 +1,10 @@
 ## 🧠 Turing Chat：本地智能对话系统
-FastAPI + Vue3 + Docker + Ollama (Qwen3:8B)
+> FastAPI + Vue3 + Docker + Ollama (Qwen3:8B)
 
 > **🚧 项目声明**  
 > 本项目是作者学习 **大模型课程-FastAPI** 阶段的练手作品，当前仅实现「接入本地模型 + 前端基础对话」功能，代码与文档均处于课程实验状态。  
 > 下文所列的「RAG、插件系统、多模态、语音交互」等特性均为课程结业后的**远期探索目标**，尚未落地。  
-> 若你期待完整功能，请关注后续更新；如想参与共建，欢迎提 Issue/PR，一起把 TODO 变成 DONE！
+> 若你期待完整功能，请关注作者结课后的后续更新！
 
 
 ---
@@ -18,7 +18,6 @@ FastAPI + Vue3 + Docker + Ollama (Qwen3:8B)
 - [🧩 后续计划](#-后续计划)
 - [🤝 贡献指南](#-贡献指南)
 - [💡 致谢](#-致谢)
-- [📄 许可证](#-许可证)
 
 ---
 
@@ -104,7 +103,7 @@ turing-chat/
 |---|---|
 | ![chat](docs/chat.png) | ![rag](docs/rag.png) |
 
-> 截图后续补充，占位即可。
+> 截图后续补充，现为占位。
 
 ---
 
@@ -135,12 +134,3 @@ turing-chat/
 
 ---
 
-## 📄 许可证
-
-[MIT](./LICENSE) © 2025 yourname
-```
-
-使用说明  
-1. 将 `yourname/turing-chat` 换成真实 GitHub 路径；  
-2. `docs/logo.png`、`docs/chat.png`、`docs/rag.png` 自行放图即可；  
-3. 如需 React 版，只需把「技术栈」与「前端目录」中的 Vue 字样改为 React。
